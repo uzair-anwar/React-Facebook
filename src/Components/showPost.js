@@ -5,7 +5,7 @@ import "../css/mainStyle.css";
 
 function Showpost() {
   const id = useParams();
-  const tempPostId = Number(id);
+  const tempPostId = Number(id.id);
 
   const tempUser = JSON.parse(localStorage.getItem("currentUser"));
   let tempID = null;
