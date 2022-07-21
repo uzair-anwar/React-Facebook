@@ -8,11 +8,14 @@ function CreatePost({ post, setPost }) {
   let postId = 1;
   let length = 0;
   let lastPost = null;
+  debugger;
   if (post !== undefined) {
-    length = post.length;
-    lastPost = post[length - 1];
-    if (lastPost !== undefined) {
-      postId = lastPost.id + 1;
+    if (post !== null) {
+      length = post.length;
+      lastPost = post[length - 1];
+      if (lastPost !== undefined) {
+        postId = lastPost.id + 1;
+      }
     }
   }
 

@@ -3,18 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/mainStyle.css";
 import CreatePost from "./createPost";
 const Main = () => {
+  //Hooks
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-  const user = JSON.parse(localStorage.getItem("currentUser"));
-  let userID = null;
-  if (user !== null) {
-    userID = user.Id;
-  }
-
   useEffect(() => {
+    debugger;
     const posts = localStorage.getItem("posts");
-    if (posts === undefined) {
-      fetch("https://jsonplaceholder.typicode.com/posts")
+    if (posts === null || posts === undefined) {
+      fetch(process.env.REACT_APP_POSTS_API)
         .then((response) => response.json())
         .then(
           (data) => {
@@ -24,11 +20,23 @@ const Main = () => {
           (error) => {
             console.error(error);
           }
-        );
+        )
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
       setPosts(JSON.parse(posts));
     }
   }, []);
+
+  //variables
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  let userID = null;
+  if (user !== null) {
+    userID = user.Id;
+  }
+
+  //functions
   function deletePost(postId) {
     const updatePosts = posts.filter((p) => p.id !== postId);
     setPosts(updatePosts);
