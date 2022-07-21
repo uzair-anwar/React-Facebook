@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
+import { func } from "prop-types";
 
 function Createcomment({ comments, setComment, userId, postId }) {
   const [content, setContent] = useState("");
@@ -9,22 +10,28 @@ function Createcomment({ comments, setComment, userId, postId }) {
   if (comments !== null && comments.length > 0) {
     cid = comments[comments.length - 1].id + 1;
   }
-
   function submit(event) {
     event.preventDefault();
-    const newComment = {
-      postId: postId,
-      id: cid,
-      name: user.name,
-      email: user.email,
-      body: content,
-      userId,
-    };
-    const updatedComments = [...comments];
-    updatedComments.push(newComment);
-    setComment(updatedComments);
-    localStorage.setItem("comments" + postId, JSON.stringify(updatedComments));
-    setContent("");
+    if (content.length > 0) {
+      const newComment = {
+        postId: postId,
+        id: cid,
+        name: user.name,
+        email: user.email,
+        body: content,
+        userId,
+      };
+      const updatedComments = [...comments];
+      updatedComments.push(newComment);
+      setComment(updatedComments);
+      localStorage.setItem(
+        "comments" + postId,
+        JSON.stringify(updatedComments)
+      );
+      setContent("");
+    } else {
+      alert("Comment can't be empty");
+    }
   }
   return (
     <form onSubmit={submit} className="form">

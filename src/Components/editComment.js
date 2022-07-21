@@ -13,14 +13,18 @@ function EditComment() {
 
   function submit(event) {
     event.preventDefault();
-    const index = comments.findIndex((data) => data.id === comment.id);
-    if (index !== -1) {
-      comments[index].body = content;
+    if (content.length > 0) {
+      const index = comments.findIndex((data) => data.id === comment.id);
+      if (index !== -1) {
+        comments[index].body = content;
+      }
+      localStorage.removeItem("comments" + pid);
+      localStorage.setItem("comments" + pid, JSON.stringify(comments));
+      alert(content);
+      navigate("/Post/" + pid, { state: { pid: pid, uid: userId } });
+    } else {
+      alert("Comment can't be Empty");
     }
-    localStorage.removeItem("comments" + pid);
-    localStorage.setItem("comments" + pid, JSON.stringify(comments));
-    alert(content);
-    navigate("/Post/" + pid, { state: { pid: pid, uid: userId } });
   }
   return (
     <form onSubmit={submit} className="edit-form">
