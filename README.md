@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Facebook Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Example:
 
-## Available Scripts
+Facebook
 
-In the project directory, you can run:
+An application has features like accounts, posts and comments built with React, JavaScript and CSS.
 
-### `npm start`
+## Project Status
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project is currently in development. Users can use different modules like accounts, posts and comments. He can create an account and log in late. They see other posts and also create a post. He also can edit or delete his post. He also sees comments on those posts and also comments on a post. He can edit or delete his comments.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Version
 
-### `npm test`
+Version 1.0
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Why do we use it?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We use this for making posts and comments also, It's looks like a social application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Feature
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Accounts:
 
-### `npm run eject`
+The user can create his account by giving his name, email and password. Then by using his email or password, he login in application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Posts:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Users can see all the posts that include his or other user posts. And he can create a new post, update his post and also delete his post.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Comments:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Users can see the comments of a post, and they can also comment on a post, edit their comments or delete them.
 
-## Learn More
+#### See all posts:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+An unauthorized user only sees posts; He can't update or delete a post. He can't comment on any post.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Built with (languages)
 
-### Code Splitting
+    React
+    JavaScript
+    HTML
+    CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Installation and Setup Instructions
 
-### Analyzing the Bundle Size
+For using this application, you should clone down this repository. You will need `node` and `npm` installed globally on your machine.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Clone:
 
-### Making a Progressive Web App
+`git clone https://github.com/uzair-anwar/Facebook-Clone.git`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Installation:
 
-### Advanced Configuration
+`npm install`  
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To Start Server:
 
-### Deployment
+`npm start`  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To Visit App:
 
-### `npm run build` fails to minify
+`localhost:3000/`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Database
+
+In this application, I have not used any database, but I use local storage as a database for storing and retrieving posts and comments.
+
+## Deployment
+
+Update later
