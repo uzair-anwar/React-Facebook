@@ -16,7 +16,6 @@ const Login = () => {
   const [users, addUser] = useState(dummyUser);
 
   useEffect(() => {
-    debugger;
     if (JSON.parse(localStorage.getItem("users")) == null) {
       localStorage.setItem("users", JSON.stringify([users]));
     }

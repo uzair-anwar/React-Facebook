@@ -10,7 +10,6 @@ const Signup = () => {
 
   //function for adding user in database
   function addAccount(user) {
-    debugger;
     if (localStorage.getItem("users") !== null) {
       let users = JSON.parse(localStorage.getItem("users"));
       users.push(user);
