@@ -6,7 +6,7 @@ import "../css/mainStyle.css";
 function Showpost() {
   const [comments, setComment] = useState([]);
   const id = useParams();
-  const tempPostId = Number(id);
+  const tempPostId = Number(id.id);
   const tempUser = JSON.parse(localStorage.getItem("currentUser"));
   let tempID = null;
   if (tempUser !== null) {
@@ -23,7 +23,7 @@ function Showpost() {
   useEffect(() => {
     let loadedComments = localStorage.getItem("comments" + tempPostId);
     if (loadedComments === undefined || loadedComments === null) {
-      fetch(process.env.REACT_APP_POSTS_API + tempPostId + "/comments")
+      fetch(process.env.REACT_APP_POSTS_API + "/" + tempPostId + "/comments")
         .then((response) => response.json())
         .then(
           (data) => {
