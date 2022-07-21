@@ -7,20 +7,25 @@ import { Link } from "react-router-dom";
 import "../css/style.css";
 import userContext from "../Context/userContext";
 const dummyUser = {
-  name: "test",
-  email: "test@gmail.com",
-  password: "test12",
-  Id: "12925466298045118",
+  name: "",
+  email: "",
+  password: "",
+  Id: "",
 };
 const Login = () => {
   const [users, addUser] = useState(dummyUser);
+
   useEffect(() => {
+    debugger;
+    if (JSON.parse(localStorage.getItem("users")) == null) {
+      localStorage.setItem("users", JSON.stringify([users]));
+    }
+
     const tempUser = JSON.parse(localStorage.getItem("users"));
     if (tempUser !== null) {
       addUser(Array.from(tempUser));
     }
   }, []);
-
   const navigate = useNavigate();
   const context = useContext(userContext);
 
