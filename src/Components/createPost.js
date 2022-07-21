@@ -8,7 +8,6 @@ function CreatePost({ post, setPost }) {
   let postId = 1;
   let length = 0;
   let lastPost = null;
-  debugger;
   if (post !== undefined) {
     if (post !== null) {
       length = post.length;

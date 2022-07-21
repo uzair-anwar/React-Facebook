@@ -7,7 +7,6 @@ const Main = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    debugger;
     const posts = localStorage.getItem("posts");
     if (posts === null || posts === undefined) {
       fetch(process.env.REACT_APP_POSTS_API)
