@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Main from "./Components/Main";
+import Editpost from "./Components/editPost";
 
 function App() {
   const [user, setUser] = useState();
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/Post/:id/edit" element={<Editpost />} />
         </Routes>
       </userContext.Provider>
     </BrowserRouter>
