@@ -1,5 +1,4 @@
 import { Button, Container, Paper, TextField } from "@material-ui/core";
-//import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,6 +25,7 @@ const Signup = () => {
       email: "",
       password: "",
     },
+
     validationSchema: Yup.object({
       name: Yup.string()
         .required("Required")
@@ -35,6 +35,7 @@ const Signup = () => {
         .min(6, "password should be greater than 6 digit")
         .required("Required"),
     }),
+
     onSubmit: (values) => {
       const user = {
         name: values.name,
@@ -42,11 +43,13 @@ const Signup = () => {
         password: values.password,
         Id: Math.random().toString().slice(2),
       };
+
       addAccount(user);
       alert("Account Created");
       navigate("/");
     },
   });
+
   return (
     <Container className="container">
       <Paper className="paper">
@@ -65,9 +68,11 @@ const Signup = () => {
               onBlur={formik.handleBlur}
               label="Enter Name"
             />
+
             {formik.touched.name && formik.errors.name ? (
               <div>{formik.errors.name}</div>
             ) : null}
+
             <TextField
               className="input"
               id="email"
@@ -78,9 +83,11 @@ const Signup = () => {
               onBlur={formik.handleBlur}
               label="Enter email"
             />
+
             {formik.touched.email && formik.errors.email ? (
               <div>{formik.errors.email}</div>
             ) : null}
+
             <TextField
               className="input"
               id="password"
@@ -91,14 +98,17 @@ const Signup = () => {
               onBlur={formik.handleBlur}
               label="Enter Password"
             />
+
             {formik.touched.password && formik.errors.password ? (
               <div>{formik.errors.password}</div>
             ) : null}
+
             <Button className="button" type="submit">
               Sign Up
             </Button>
           </form>
         </div>
+
         <div className="login-link">
           <p className="text">
             Already have Account{" "}
