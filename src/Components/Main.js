@@ -71,7 +71,7 @@ const Main = () => {
             <p className="content">{post.body}</p>
             <p className="text-detail">
               <i>
-                (This post#{post.id} was made by user#{post.userId})
+                (This post#{post.id} was made by Author: {post.userId})
               </i>
             </p>
             <Link
