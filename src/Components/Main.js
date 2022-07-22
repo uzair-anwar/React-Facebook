@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../css/mainStyle.css";
 import CreatePost from "./createPost";
+import Logout from "./logout";
 const Main = () => {
-  //Hooks
-  const navigate = useNavigate();
+  //Following block of code is related to React hooks like useaState and useEffect etc
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const posts = localStorage.getItem("posts");
@@ -37,31 +37,23 @@ const Main = () => {
 
   //functions
   function deletePost(postId) {
-    const updatePosts = posts.filter((p) => p.id !== postId);
-    setPosts(updatePosts);
-    localStorage.setItem("posts", JSON.stringify(updatePosts));
+    const updatedPosts = posts.filter((post) => post.id !== postId);
+    setPosts(updatedPosts);
+    localStorage.setItem("posts", JSON.stringify(updatedPosts));
   }
-  function logOut() {
-    localStorage.removeItem("currentUser");
-    navigate("/");
-  }
+
   return (
     <>
       <div className="main">
         <div className="name-div">
           <h1>All Posts</h1>
-          {userID === null ? null : (
-            <div>
-              <button className="logout" type="submit" onClick={() => logOut()}>
-                Log Out
-              </button>
-            </div>
-          )}
+          <Logout userID={userID} />
         </div>
 
         {userID === null ? null : (
           <CreatePost post={posts} setPost={setPosts} userId={userID} />
         )}
+
         {posts?.map((post) => (
           <div key={post.id} className="post">
             <p className="title">Title</p>
@@ -71,12 +63,13 @@ const Main = () => {
             <p className="content">{post.body}</p>
             <p className="text-detail">
               <i>
-                (This post#{post.id} was made by user#{post.userId})
+                (This post#{post.id} was made by Author: {post.userId})
               </i>
             </p>
+
             {post.userId !== userID ? null : (
               <div className="buttons">
-                <button className="update btn">
+                <button className="update-btn common-btn">
                   <Link
                     className="update-link"
                     to={"/Post/" + post.id + "/edit"}
@@ -86,8 +79,9 @@ const Main = () => {
                     UPDATE
                   </Link>
                 </button>
+
                 <button
-                  className="delete btn"
+                  className="delete-btn common-btn"
                   onClick={() => deletePost(post.id)}
                 >
                   DELETE

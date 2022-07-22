@@ -19,8 +19,11 @@ function CreatePost({ post, setPost }) {
   }
 
   function validate() {
-    if (title.length > 0 && content.length > 0) return true;
-    else return false;
+    if (title.length > 0 && content.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   function submit(event) {
@@ -59,7 +62,7 @@ function CreatePost({ post, setPost }) {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <Button sx={{ color: "white" }} variant="contained" type="submit">
+      <Button variant="contained" type="submit">
         Create
       </Button>
     </form>
