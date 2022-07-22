@@ -1,6 +1,6 @@
 # Facebook Clone
 
-## Project Status
+## Project Overview
 
 In this project, we have some features like accounts, posts and comments. Users can create an account and log in lately. They can see other's posts and also create a post. They can also edit or delete their post. They can also read comments and create a comment on a post. They can edit or delete thier comments as well.
 
@@ -12,7 +12,7 @@ Version 1.0
 
 We use this for making posts and comments also, It's looks like a social application.
 
-## Featurea
+## Features
 
 #### Accounts:
 
@@ -52,10 +52,6 @@ Installation:
 To Start Server:
 
 `npm start`
-
-To Visit App:
-
-`localhost:3000/`
 
 ## Database
 
