@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import { useLocation, useNavigate } from "react-router-dom";
 function EditComment() {
-  const loc = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
-  const comment = loc.state.comment;
+  const comment = location.state.comment;
   const [content, setContent] = useState(comment.body);
 
-  const comments = loc.state.comments;
-  const pid = loc.state.pid;
-  const userId = loc.state.userId;
+  const comments = location.state.comments;
+  const pid = location.state.pid;
+  const userId = location.state.userId;
 
   function submit(event) {
     event.preventDefault();

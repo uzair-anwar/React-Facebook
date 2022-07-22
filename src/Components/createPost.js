@@ -8,7 +8,6 @@ function CreatePost({ post, setPost }) {
   let postId = 1;
   let length = 0;
   let lastPost = null;
-  debugger;
   if (post !== undefined) {
     if (post !== null) {
       length = post.length;
@@ -33,6 +32,7 @@ function CreatePost({ post, setPost }) {
         title: title,
         body: content,
       };
+
       const updatePosts = [...post];
       updatePosts.push(newPost);
       setPost(updatePosts);
@@ -43,6 +43,7 @@ function CreatePost({ post, setPost }) {
       alert("Enter Values first");
     }
   }
+
   return (
     <form onSubmit={submit} className="form">
       <h2>Create new Post</h2>
@@ -60,6 +61,7 @@ function CreatePost({ post, setPost }) {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
+
       <Button sx={{ color: "white" }} variant="contained" type="submit">
         Create
       </Button>
