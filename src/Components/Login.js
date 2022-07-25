@@ -6,14 +6,14 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import "../css/style.css";
 import userContext from "../Context/userContext";
-const dummyUser = {
+const initialUser = {
   name: "",
   email: "",
   password: "",
   Id: "",
 };
 const Login = () => {
-  const [users, addUser] = useState(dummyUser);
+  const [users, addUser] = useState(initialUser);
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("users")) == null) {
