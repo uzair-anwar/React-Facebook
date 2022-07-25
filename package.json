@@ -1,6 +1,10 @@
 {
   "name": "facebook",
   "version": "0.1.0",
+  "engines": {
+    "node": "<=14.x.x",
+    "npm": "<=6.x.x"
+  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
