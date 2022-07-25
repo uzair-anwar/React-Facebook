@@ -6,7 +6,7 @@ import "../css/mainStyle.css";
 function Showpost() {
   const [comments, setComment] = useState([]);
   const id = useParams();
-  const tempPostId = Number(id.id);
+  const [tempPostId, setTempPostId] = useState(Number(id.id));
   const [tempUser, setTempUser] = useState(
     JSON.parse(localStorage.getItem("currentUser"))
   );
