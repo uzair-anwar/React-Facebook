@@ -10,6 +10,9 @@ function App() {
   const [user, setUser] = useState();
   return (
     <BrowserRouter>
+      {/* This will be used to store the current loggedIn user into useContext hook
+       and which we can access in its child components for restricting unauthorized access
+       and for further relevant use cases. */}
       <userContext.Provider value={{ user, setUser }}>
         <Routes>
           <Route path="/" element={<Login />} />
