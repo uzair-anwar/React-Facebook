@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../css/mainStyle.css";
 import CreatePost from "./createPost";
+import Logout from "./logout";
 const Main = () => {
-  //Hooks
-  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const posts = localStorage.getItem("posts");
@@ -28,40 +27,32 @@ const Main = () => {
     }
   }, []);
 
-  //variables
+  //varibale to store currentUser and userID varibale that store currentUser id
   const user = JSON.parse(localStorage.getItem("currentUser"));
   let userID = null;
   if (user !== null) {
     userID = user.Id;
   }
 
-  //functions
+  //Function for deleting a post
   function deletePost(postId) {
-    const updatePosts = posts.filter((p) => p.id !== postId);
-    setPosts(updatePosts);
-    localStorage.setItem("posts", JSON.stringify(updatePosts));
+    const updatedPosts = posts.filter((post) => post.id !== postId);
+    setPosts(updatedPosts);
+    localStorage.setItem("posts", JSON.stringify(updatedPosts));
   }
-  function logOut() {
-    localStorage.removeItem("currentUser");
-    navigate("/");
-  }
+
   return (
     <>
       <div className="main">
         <div className="name-div">
           <h1>All Posts</h1>
-          {userID === null ? null : (
-            <div>
-              <button className="logout" type="submit" onClick={() => logOut()}>
-                Log Out
-              </button>
-            </div>
-          )}
+          <Logout userID={userID} />
         </div>
 
         {userID === null ? null : (
           <CreatePost post={posts} setPost={setPosts} userId={userID} />
         )}
+
         {posts?.map((post) => (
           <div key={post.id} className="post">
             <p className="title">Title</p>
@@ -83,7 +74,7 @@ const Main = () => {
             </Link>
             {post.userId !== userID ? null : (
               <div className="buttons">
-                <button className="update btn">
+                <button className="update-btn common-btn">
                   <Link
                     className="update-link"
                     to={"/Post/" + post.id + "/edit"}
@@ -93,8 +84,9 @@ const Main = () => {
                     UPDATE
                   </Link>
                 </button>
+
                 <button
-                  className="delete btn"
+                  className="delete-btn common-btn"
                   onClick={() => deletePost(post.id)}
                 >
                   DELETE

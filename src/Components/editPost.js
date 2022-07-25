@@ -4,10 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../css/mainStyle.css";
 
 function Editpost() {
-  const loc = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
-  const post = loc.state.post;
-  const posts = loc.state.posts;
+  const post = location.state.post;
+  const posts = location.state.posts;
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.body);
 
@@ -21,6 +21,7 @@ function Editpost() {
     alert(title + content);
     navigate("/main");
   }
+
   return (
     <form onSubmit={submit} className="edit-form">
       <div className="form">
@@ -32,6 +33,7 @@ function Editpost() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+
         <textarea
           className="content-input"
           type="text"
@@ -39,6 +41,7 @@ function Editpost() {
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
+
         <Button variant="contained" type="submit">
           Update
         </Button>

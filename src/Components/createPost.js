@@ -5,9 +5,9 @@ function CreatePost({ post, setPost }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  let postId = 1;
-  let length = 0;
-  let lastPost = null;
+  let postId = 1,
+    length = 0,
+    lastPost = null;
   if (post !== undefined) {
     if (post !== null) {
       length = post.length;
@@ -19,8 +19,11 @@ function CreatePost({ post, setPost }) {
   }
 
   function validate() {
-    if (title.length > 0 && content.length > 0) return true;
-    else return false;
+    if (title.length > 0 && content.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   function submit(event) {
@@ -61,8 +64,7 @@ function CreatePost({ post, setPost }) {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-
-      <Button sx={{ color: "white" }} variant="contained" type="submit">
+      <Button variant="contained" type="submit">
         Create
       </Button>
     </form>
