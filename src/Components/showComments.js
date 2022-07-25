@@ -7,12 +7,18 @@ function Showpost() {
   const [comments, setComment] = useState([]);
   const id = useParams();
   const tempPostId = Number(id.id);
-  const tempUser = JSON.parse(localStorage.getItem("currentUser"));
-  let tempID = null;
-  if (tempUser !== null) {
-    tempID = tempUser.Id;
-  }
-  const [uid] = useState(tempID);
+  const [tempUser, setTempUser] = useState(
+    JSON.parse(localStorage.getItem("currentUser"))
+  );
+  const [tempID, setTempID] = useState(null);
+  const [uid, setUid] = useState(tempID);
+
+  useEffect(() => {
+    if (tempUser !== null) {
+      setTempID(tempUser.Id);
+      setUid(tempUser.Id);
+    }
+  }, []);
 
   const [post] = useState(
     JSON.parse(localStorage.getItem("posts")).find(
