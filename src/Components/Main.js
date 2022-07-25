@@ -4,7 +4,6 @@ import "../css/mainStyle.css";
 import CreatePost from "./createPost";
 import Logout from "./logout";
 const Main = () => {
-  //Following block of code is related to React hooks like useaState and useEffect etc
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const posts = localStorage.getItem("posts");
@@ -28,14 +27,14 @@ const Main = () => {
     }
   }, []);
 
-  //variables
+  //varibale to store currentUser and userID varibale that store currentUser id
   const user = JSON.parse(localStorage.getItem("currentUser"));
   let userID = null;
   if (user !== null) {
     userID = user.Id;
   }
 
-  //functions
+  //Function for deleting a post
   function deletePost(postId) {
     const updatedPosts = posts.filter((post) => post.id !== postId);
     setPosts(updatedPosts);

@@ -5,9 +5,9 @@ function CreatePost({ post, setPost }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  let postId = 1;
-  let length = 0;
-  let lastPost = null;
+  let postId = 1,
+    length = 0,
+    lastPost = null;
   if (post !== undefined) {
     if (post !== null) {
       length = post.length;
