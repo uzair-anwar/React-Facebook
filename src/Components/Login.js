@@ -6,21 +6,25 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import "../css/style.css";
 import userContext from "../Context/userContext";
-const dummyUser = {
-  name: "test",
-  email: "test@gmail.com",
-  password: "test12",
-  Id: "12925466298045118",
+const initialUser = {
+  name: "",
+  email: "",
+  password: "",
+  Id: "",
 };
 const Login = () => {
-  const [users, addUser] = useState(dummyUser);
+  const [users, addUser] = useState(initialUser);
+
   useEffect(() => {
+    if (JSON.parse(localStorage.getItem("users")) == null) {
+      localStorage.setItem("users", JSON.stringify([users]));
+    }
+
     const tempUser = JSON.parse(localStorage.getItem("users"));
     if (tempUser !== null) {
       addUser(Array.from(tempUser));
     }
   }, []);
-
   const navigate = useNavigate();
   const context = useContext(userContext);
 
@@ -31,8 +35,7 @@ const Login = () => {
       if (element.email === user.email && element.password === user.password) {
         context.setUser(element);
         localStorage.setItem("currentUser", JSON.stringify(element));
-        check = true;
-        return;
+        return (check = true);
       }
     });
     if (check) return true;
@@ -44,17 +47,20 @@ const Login = () => {
       email: "",
       password: "",
     },
+
     validationSchema: Yup.object({
       email: Yup.string().required("Required").email("Invalid email address"),
       password: Yup.string()
         .min(6, "Password should be greater than 6 digit")
         .required("Required"),
     }),
+
     onSubmit: (values) => {
       const user = {
         email: values.email,
         password: values.password,
       };
+
       if (checkUser(user)) {
         navigate("/main");
       } else {
@@ -62,6 +68,7 @@ const Login = () => {
       }
     },
   });
+
   return (
     <Container className="container">
       <Paper className="paper">
@@ -80,9 +87,11 @@ const Login = () => {
               onBlur={formik.handleBlur}
               label="Enter email"
             />
+
             {formik.touched.email && formik.errors.email ? (
               <div>{formik.errors.email}</div>
             ) : null}
+
             <TextField
               className="input"
               id="password"
@@ -93,6 +102,7 @@ const Login = () => {
               onBlur={formik.handleBlur}
               label="Enter Password"
             />
+
             {formik.touched.password && formik.errors.password ? (
               <div>{formik.errors.password}</div>
             ) : null}
@@ -101,6 +111,7 @@ const Login = () => {
             </Button>
           </form>
         </div>
+
         <div className="login-link">
           <p className="text">
             If you have no account, Click here{" "}
