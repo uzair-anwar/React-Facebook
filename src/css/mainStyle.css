@@ -107,6 +107,7 @@
   align-items: center;
   justify-content: center;
   width: 150px !important;
+  text-decoration: none;
 }
 
 .logout {

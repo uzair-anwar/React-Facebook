@@ -57,8 +57,8 @@ function Showpost() {
   return (
     <div className="main">
       <div className="post main-post">
-        <button className="update btn btn-back">
-          <Link to="/main" state={{ userID: uid }} className="link">
+        <button className="update-btn common-btn btn-back">
+          <Link to="/main" state={{ userID: uid }} className="btn-back">
             Back
           </Link>
         </button>
@@ -96,7 +96,7 @@ function Showpost() {
             </p>
             {comment.userId !== uid ? null : (
               <div className="buttons">
-                <button className="update btn">
+                <button className="update-btn common-btn">
                   <Link
                     className="update-link"
                     to={"/Post/" + post.id + "/Comment/" + comment.id + "/edit"}
@@ -112,7 +112,7 @@ function Showpost() {
                 </button>
                 <button
                   onClick={() => deleteComment(comment.id)}
-                  className="delete btn"
+                  className="delete-btn common-btn"
                 >
                   Delete
                 </button>

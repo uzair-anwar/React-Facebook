@@ -23,9 +23,9 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "env-cmd -e .env react-scripts start",
-    "build:staging": "env-cmd -e .env react-scripts build",
-    "build:production": "env-cmd -e .env react-scripts build",
+    "start": "react-scripts start",
+    "build:staging": "react-scripts build",
+    "build:production": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
