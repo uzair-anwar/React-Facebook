@@ -16,6 +16,7 @@
   color: white;
   padding-left: 50px;
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -29,6 +30,7 @@
   border-radius: 5px;
   color: white;
 }
+
 .title-input,
 .content-input {
   height: 40px;
@@ -68,6 +70,7 @@
 .content {
   font-size: 25px;
 }
+
 .buttons {
   display: flex;
   flex-direction: row;
@@ -82,11 +85,13 @@
   text-align: center;
   border: none;
 }
+
 .delete {
   background-color: rgb(171, 224, 155);
   color: black;
   border: none;
 }
+
 .logout,
 .btn {
   width: 200px;
@@ -96,12 +101,14 @@
   border-radius: 5px;
   margin: 5px;
 }
+
 .btn-back {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 150px !important;
 }
+
 .logout {
   height: 40px !important;
   width: 100px !important;
@@ -109,21 +116,26 @@
   margin-left: 20px;
   border: none;
 }
+
 .link {
   text-decoration: none;
   border-radius: 5px;
   color: black;
 }
+
 .text-detail {
   text-align: right;
 }
+
 .update-link {
   text-decoration: none;
   color: black;
 }
+
 .comment {
   font-size: 1.3rem;
 }
+
 .edit-form {
   display: flex;
   flex-direction: column;
@@ -133,7 +145,12 @@
   border: 1 solid black;
   border-radius: 5px;
 }
+
 .all-comment {
   float: left !important;
   color: brown;
+}
+
+.comment-link {
+  text-decoration: none;
 }

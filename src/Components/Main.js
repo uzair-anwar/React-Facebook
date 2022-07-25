@@ -77,7 +77,7 @@ const Main = () => {
             <Link
               to={"/Post/" + post.id}
               state={{ pid: post.id }}
-              style={{ textDecoration: "none" }}
+              className="comment-link"
             >
               Show Comments...{" "}
             </Link>
