@@ -150,3 +150,7 @@
   float: left !important;
   color: brown;
 }
+
+.comment-link {
+  text-decoration: none;
+}

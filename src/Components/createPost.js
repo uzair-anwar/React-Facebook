@@ -35,6 +35,7 @@ function CreatePost({ post, setPost }) {
         title: title,
         body: content,
       };
+
       const updatePosts = [...post];
       updatePosts.push(newPost);
       setPost(updatePosts);
@@ -45,6 +46,7 @@ function CreatePost({ post, setPost }) {
       alert("Enter Values first");
     }
   }
+
   return (
     <form onSubmit={submit} className="form">
       <h2>Create new Post</h2>

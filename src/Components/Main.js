@@ -65,7 +65,13 @@ const Main = () => {
                 (This post#{post.id} was made by Author: {post.userId})
               </i>
             </p>
-
+            <Link
+              to={"/Post/" + post.id}
+              state={{ pid: post.id }}
+              className="comment-link"
+            >
+              Show Comments...{" "}
+            </Link>
             {post.userId !== userID ? null : (
               <div className="buttons">
                 <button className="update-btn common-btn">
