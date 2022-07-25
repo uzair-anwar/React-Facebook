@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
 const _ = require("lodash");
 
 function Createcomment({ comments, setComment, userId, postId }) {
   const [content, setContent] = useState("");
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  let commentId = 1;
+  const [commentId, setCommentId] = useState(1);
 
-  if (!_.isEmpty(comments)) {
-    commentId = comments[comments.length - 1].id + 1;
-  }
+  useEffect(() => {
+    if (!_.isEmpty(comments)) {
+      setCommentId(comments[comments.length - 1].id + 1);
+    }
+  }, []);
 
   function submit(event) {
     event.preventDefault();

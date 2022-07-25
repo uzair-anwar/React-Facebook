@@ -6,7 +6,7 @@ import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Main from "./Components/Main";
 import Editpost from "./Components/editPost";
-import Showpost from "./Components/showPost";
+import Showpost from "./Components/showComments";
 import EditComment from "./Components/editComment";
 
 function App() {
