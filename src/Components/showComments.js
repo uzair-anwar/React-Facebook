@@ -20,7 +20,6 @@ function Showpost() {
     }
   }, []);
 
-  debugger;
   const [post] = useState(
     JSON.parse(localStorage.getItem("posts")).find(
       (post) => post.id === tempPostId
