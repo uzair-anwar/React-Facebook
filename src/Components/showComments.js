@@ -57,22 +57,16 @@ function Showpost() {
   return (
     <div className="main">
       <div className="post main-post">
-        <button className="update btn btn-back">
-          <Link to="/main" state={{ userID: uid }} className="link">
+        <button className="button-div common-btn btn-back">
+          <Link to="/posts" state={{ userID: uid }} className="btn-back">
             Back
           </Link>
         </button>
         <div className="post">
-          <p className="title">Title</p>
-          <p>
+          <p className="title">
             <i>{post.title}</i>
           </p>
           <p className="content">{post.body}</p>
-          <p className="text-detail">
-            <i>
-              (This post#{post.id} was made by Author: {post.userId})
-            </i>
-          </p>
         </div>
         {uid === null ? null : (
           <Createcomment
@@ -88,15 +82,13 @@ function Showpost() {
         {comments?.map((comment) => (
           <div key={comment.id} className="post">
             <p className="comment">{comment.body}</p>
-            <h4>Comment Detail :</h4>
-            <p>
-              <i>
-                Made by "{comment.name}" - "{comment.email}"
-              </i>
-            </p>
+            <span></span>
+            <h4>Commentator :</h4>
+            <i> {comment.email}</i>
+            <span></span>
             {comment.userId !== uid ? null : (
               <div className="buttons">
-                <button className="update btn">
+                <button className="update-btn common-btn">
                   <Link
                     className="update-link"
                     to={"/Post/" + post.id + "/Comment/" + comment.id + "/edit"}
@@ -112,7 +104,7 @@ function Showpost() {
                 </button>
                 <button
                   onClick={() => deleteComment(comment.id)}
-                  className="delete btn"
+                  className="delete-btn common-btn"
                 >
                   Delete
                 </button>

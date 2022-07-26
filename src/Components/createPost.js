@@ -1,34 +1,33 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import "../css/mainStyle.css";
+const _ = require("lodash");
+
 function CreatePost({ post, setPost }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  let postId = 1,
-    length = 0,
-    lastPost = null;
-  if (post !== undefined) {
-    if (post !== null) {
-      length = post.length;
-      lastPost = post[length - 1];
-      if (lastPost !== undefined) {
-        postId = lastPost.id + 1;
-      }
-    }
-  }
+  let postId = 1;
+  postId = Number(_.uniqueId("10"));
 
   function validate() {
-    if (title.length > 0 && content.length > 0) {
-      return true;
+    if (title.length <= 0) {
+      return "title";
+    } else if (content.length <= 0) {
+      return "content";
+    } else if (!isNaN(title)) {
+      return "number";
+    } else if (content.length < 20) {
+      return "length";
     } else {
-      return false;
+      return "validated";
     }
   }
 
   function submit(event) {
     event.preventDefault();
-    if (validate()) {
+    const validationError = validate();
+    if (validationError === "validated") {
       const newPost = {
         id: postId,
         userId: user.Id,
@@ -37,13 +36,19 @@ function CreatePost({ post, setPost }) {
       };
 
       const updatePosts = [...post];
-      updatePosts.push(newPost);
+      updatePosts.unshift(newPost);
       setPost(updatePosts);
       localStorage.setItem("posts", JSON.stringify(updatePosts));
       setTitle("");
       setContent("");
-    } else {
-      alert("Enter Values first");
+    } else if (validationError === "title") {
+      alert("Please enter a title");
+    } else if (validationError === "content") {
+      alert("Please enter the content");
+    } else if (validationError === "number") {
+      alert("Title should contain atleast one alphabet");
+    } else if (validationError === "length") {
+      alert("Content should be greate then 20 character");
     }
   }
 

@@ -28,9 +28,12 @@ const Signup = () => {
 
     validationSchema: Yup.object({
       name: Yup.string()
+        .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for name ")
         .required("Required")
-        .max(15, "Must be 15 characters or less"),
+        .max(25, "Must be 25 characters or less"),
+
       email: Yup.string().required("Required").email("Invalid email address"),
+
       password: Yup.string()
         .min(6, "password should be greater than 6 digit")
         .required("Required"),
@@ -70,7 +73,7 @@ const Signup = () => {
             />
 
             {formik.touched.name && formik.errors.name ? (
-              <div>{formik.errors.name}</div>
+              <div className="error-msg">{formik.errors.name}</div>
             ) : null}
 
             <TextField
@@ -85,7 +88,7 @@ const Signup = () => {
             />
 
             {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
+              <div className="error-msg">{formik.errors.email}</div>
             ) : null}
 
             <TextField
@@ -100,7 +103,7 @@ const Signup = () => {
             />
 
             {formik.touched.password && formik.errors.password ? (
-              <div>{formik.errors.password}</div>
+              <div className="error-msg">{formik.errors.password}</div>
             ) : null}
 
             <Button className="button" type="submit">

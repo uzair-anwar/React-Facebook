@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/mainStyle.css";
 import CreatePost from "./createPost";
 import Logout from "./logout";
 const Main = () => {
+  const navigate = useNavigate();
+
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const posts = localStorage.getItem("posts");
@@ -12,6 +14,8 @@ const Main = () => {
         .then((response) => response.json())
         .then(
           (data) => {
+            //Data has many enteries (about 100 entries that make difficult in scrolling) soo I reduce data here
+            data = data.filter((item) => item.id > 90);
             setPosts(data);
             localStorage.setItem("posts", JSON.stringify(data));
           },
@@ -39,6 +43,12 @@ const Main = () => {
     const updatedPosts = posts.filter((post) => post.id !== postId);
     setPosts(updatedPosts);
     localStorage.setItem("posts", JSON.stringify(updatedPosts));
+    localStorage.removeItem("comments" + postId);
+  }
+
+  //Function for logging in
+  function login() {
+    navigate("/");
   }
 
   return (
@@ -46,25 +56,25 @@ const Main = () => {
       <div className="main">
         <div className="name-div">
           <h1>All Posts</h1>
-          <Logout userID={userID} />
+          <div className="logout-section">
+            {userID === null ? (
+              <button className="logout" type="submit" onClick={() => login()}>
+                Sign In
+              </button>
+            ) : null}
+            <Logout userID={userID} />
+          </div>
         </div>
-
         {userID === null ? null : (
           <CreatePost post={posts} setPost={setPosts} userId={userID} />
         )}
 
         {posts?.map((post) => (
           <div key={post.id} className="post">
-            <p className="title">Title</p>
-            <p>
+            <p className="title">
               <i>{post.title}</i>
             </p>
             <p className="content">{post.body}</p>
-            <p className="text-detail">
-              <i>
-                (This post#{post.id} was made by Author: {post.userId})
-              </i>
-            </p>
             <Link
               to={"/Post/" + post.id}
               state={{ pid: post.id }}

@@ -11,15 +11,40 @@ function Editpost() {
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.body);
 
+  function validate() {
+    if (title.length <= 0) {
+      return "title";
+    } else if (content.length <= 0) {
+      return "content";
+    } else if (!isNaN(title)) {
+      return "number";
+    } else if (content.length < 20) {
+      return "length";
+    } else {
+      return "validated";
+    }
+  }
+
   function submit(event) {
     event.preventDefault();
-    const index = posts.findIndex((data) => data.id === post.id);
-    posts[index].title = title;
-    posts[index].body = content;
-    localStorage.removeItem("posts");
-    localStorage.setItem("posts", JSON.stringify(posts));
-    alert(title + content);
-    navigate("/main");
+    const validationError = validate();
+    if (validationError === "validated") {
+      const index = posts.findIndex((data) => data.id === post.id);
+      posts[index].title = title;
+      posts[index].body = content;
+      localStorage.removeItem("posts");
+      localStorage.setItem("posts", JSON.stringify(posts));
+      alert("Post Updated Successfully");
+      navigate("/posts");
+    } else if (validationError === "title") {
+      alert("Please enter a title");
+    } else if (validationError === "content") {
+      alert("Please enter the content");
+    } else if (validationError === "number") {
+      alert("Title should contain atleast one alphabet");
+    } else if (validationError === "length") {
+      alert("Content should be greate then 20 character");
+    }
   }
 
   return (
