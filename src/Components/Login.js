@@ -62,7 +62,7 @@ const Login = () => {
       };
 
       if (checkUser(user)) {
-        navigate("/main");
+        navigate("/posts");
       } else {
         alert("User does not Exist");
       }
@@ -89,7 +89,7 @@ const Login = () => {
             />
 
             {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
+              <div className="error-msg">{formik.errors.email}</div>
             ) : null}
 
             <TextField
@@ -104,7 +104,7 @@ const Login = () => {
             />
 
             {formik.touched.password && formik.errors.password ? (
-              <div>{formik.errors.password}</div>
+              <div className="error-msg">{formik.errors.password}</div>
             ) : null}
             <Button className="button" type="submit">
               Log in

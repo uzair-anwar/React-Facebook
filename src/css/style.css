@@ -1,11 +1,16 @@
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .paper {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  margin: auto;
+  margin-top: 10%;
 }
 
 .header {
@@ -42,4 +47,8 @@
 
 .text {
   color: black;
+}
+
+.error-msg {
+  color: red;
 }

@@ -40,7 +40,7 @@ function Createcomment({ comments, setComment, userId, postId }) {
 
   return (
     <form onSubmit={submit} className="form">
-      <h2>Create new Comment</h2>
+      <h3>Create new Comment</h3>
       <input
         className="title-input"
         type="text"

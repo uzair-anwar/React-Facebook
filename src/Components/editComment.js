@@ -20,7 +20,7 @@ function EditComment() {
       }
       localStorage.removeItem("comments" + pid);
       localStorage.setItem("comments" + pid, JSON.stringify(comments));
-      alert(content);
+      alert("Comment Updated Successfully");
       navigate("/Post/" + pid, { state: { pid: pid, uid: userId } });
     } else {
       alert("Comment can't be Empty");
