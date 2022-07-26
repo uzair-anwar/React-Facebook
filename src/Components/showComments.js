@@ -20,6 +20,7 @@ function Showpost() {
     }
   }, []);
 
+  debugger;
   const [post] = useState(
     JSON.parse(localStorage.getItem("posts")).find(
       (post) => post.id === tempPostId
@@ -58,7 +59,7 @@ function Showpost() {
     <div className="main">
       <div className="post main-post">
         <button className="button-div common-btn btn-back">
-          <Link to="/main" state={{ userID: uid }} className="btn-back">
+          <Link to="/posts" state={{ userID: uid }} className="btn-back">
             Back
           </Link>
         </button>

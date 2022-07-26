@@ -8,7 +8,7 @@ function CreatePost({ post, setPost }) {
   const [content, setContent] = useState("");
   const user = JSON.parse(localStorage.getItem("currentUser"));
   let postId = 1;
-  postId = _.uniqueId("10");
+  postId = Number(_.uniqueId("10"));
 
   function validate() {
     if (title.length <= 0) {
